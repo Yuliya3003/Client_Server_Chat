@@ -1,14 +1,17 @@
 package server1;
 
+import server1.client.ClientController;
 import server1.client.ClientGUI;
-import server1.server.ServerWindow;
+import server1.server.ServerController;
+import server1.server.repository.ServerRepository;
+import server1.server.view.ServerWindow;
 
-import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        ServerWindow serverWindow = new ServerWindow();
-        new ClientGUI(serverWindow, "artem");
-        new ClientGUI(serverWindow, "yuliya");
+        ServerController serverController = new ServerController(new ServerWindow(), new ServerRepository());
+
+        new ClientController(new ClientGUI(), serverController);
+        new ClientController(new ClientGUI(), serverController);
     }
 }
